@@ -2,11 +2,11 @@ FROM python:3.5
 
 LABEL maintainer="craig.smith@cnvrg.io"
 
-RUN mkdir /root/.ssh
+ARG SSH_PRIVATE_KEY
 
-RUN echo $SSH_PRIVATE_KEY > /root/.ssh/id_ed25519
+RUN mkdir -p -m 0600 /root/.ssh
 
-RUN chmod 400 /root/.ssh/id_ed25519
+RUN echo "${SSH_PRIVATE_KEY}" > /root/.ssh/id_ed25519
 
 RUN touch /root/.ssh/known_hosts
 RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
