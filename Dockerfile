@@ -4,9 +4,11 @@ LABEL maintainer="craig.smith@cnvrg.io"
 
 ARG SSH_PRIVATE_KEY
 
-RUN mkdir -p -m 0600 /root/.ssh
+RUN mkdir /root/.ssh
 
 RUN echo "${SSH_PRIVATE_KEY}" > /root/.ssh/id_ed25519
+
+RUN chmod 400 /root/.ssh/id_ed25519
 
 RUN touch /root/.ssh/known_hosts
 RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
