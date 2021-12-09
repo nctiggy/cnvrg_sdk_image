@@ -15,8 +15,9 @@ RUN mkdir /root/.ssh && \
             #echo "${SSH_PRIVATE_KEY}" > /root/.ssh/id_ed25519 && \
             #chmod 400 /root/.ssh/id_ed25519 && \
             touch /root/.ssh/known_hosts && \
-            ssh-keyscan github.com >> /root/.ssh/known_hosts && \
-            git clone git@github.com:AccessibleAI/cnvrg-sdk.git && \
+            ssh-keyscan github.com >> /root/.ssh/known_hosts
+
+RUN --mount=type=ssh,id=github git clone git@github.com:AccessibleAI/cnvrg-sdk.git
             #chmod 600 /root/.ssh/id_ed25519 && \
             #rm /root/.ssh/id_ed25519
 
