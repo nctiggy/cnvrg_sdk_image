@@ -30,4 +30,4 @@ jobs:
           push: true
           tags: nctiggy/cnvrg-sdk:latest
           secrets: |
-            "ssh_private_key=${{ secrets.SSH_PRIVATE_KEY }}"
+            "SSH_PRIVATE_KEY=${{ secrets.SSH_PRIVATE_KEY }}"

@@ -2,11 +2,9 @@ FROM python:3.5
 
 LABEL maintainer="craig.smith@cnvrg.io"
 
-RUN --mount=type=secret,id=ssh_private_key
-
 RUN mkdir /root/.ssh
 
-RUN cp /run/secrets/ssh_private_key /root/.ssh/id_ed25519
+RUN echo $SSH_PRIVATE_KEY > /root/.ssh/id_ed25519
 
 RUN chmod 400 /root/.ssh/id_ed25519
 
