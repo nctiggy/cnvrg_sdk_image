@@ -17,7 +17,7 @@ RUN mkdir /root/.ssh && \
             touch /root/.ssh/known_hosts && \
             ssh-keyscan github.com >> /root/.ssh/known_hosts
 
-RUN --mount=type=ssh,id=github git clone git@github.com:AccessibleAI/cnvrg-sdk.git
+RUN git clone git@github.com:AccessibleAI/cnvrg-sdk.git && \
             chmod 600 /root/.ssh/id_ed25519 && \
             rm /root/.ssh/id_ed25519
 
