@@ -11,6 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       -
+        uses: webfactory/ssh-agent@v0.5.4
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1.2.0
       -
@@ -29,5 +33,5 @@ jobs:
         with:
           push: true
           tags: nctiggy/cnvrg-sdk:latest
-          build-args: |
-            "SSH_PRIVATE_KEY=${{ secrets.SSH_PRIVATE_KEY }}"
+          ssh: |
+            default=${{ env.SSH_AUTH_SOCK }}
