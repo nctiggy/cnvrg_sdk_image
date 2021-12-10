@@ -9,7 +9,7 @@ RUN apk add --no-cache --virtual .build-deps \
             libffi-dev \
             openssl-dev
 
-RUN git clone git@github.com:AccessibleAI/cnvrg-sdk.git && \
+RUN --mount=type=ssh git clone git@github.com:AccessibleAI/cnvrg-sdk.git
 
 WORKDIR cnvrg-sdk
 
